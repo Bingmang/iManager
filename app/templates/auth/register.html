@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "register" %}
+{% block title %}iManager - 注册{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="page-header" style="margin-top: 120px;">
+        <h1 class="white">欢迎来到iManager，新用户。</h1>
+    </div>
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+</div>
+{% endblock %}

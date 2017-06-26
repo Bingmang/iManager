@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "login" %}
+{% block title %}iManager - 添加物品{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="page-header" style="margin-top: 120px;">
+        <h1 class="white">添加你的物品</h1>
+    </div>
+    <div class="col-md-4" >
+        {{ wtf.quick_form(form) }}
+        <br>
+        <p>忘记密码？ <a href="{{ url_for('auth.password_reset_request') }}">重置密码。</a></p>
+        <p>没有账号？ <a href="{{ url_for('auth.register') }}">注册。</a></p>
+    </div>
+</div>
+{% endblock %}
