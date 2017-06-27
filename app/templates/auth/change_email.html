@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% set active_page = "change_email" %}
-{% block title %}iManager - 更改邮箱{% endblock %}
+{% block title %}Simian CI - 更改邮箱{% endblock %}
 
 {% block page_content %}
-<div class="container">
-    <div class="page-header" style="margin-top: 120px;">
-        <h1 class="white">更改你的邮箱</h1>
-    </div>
+    <h1 class="lead-title text-center text-lg-left">Simian CI - CHANGE EMAIL</h1>
+    <p class="lead-subtitle text-center text-lg-left">更改您的邮箱</p>
+    </br>
     <div class="col-md-4">
         {{ wtf.quick_form(form) }}
     </div>

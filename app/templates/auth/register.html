@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% set active_page = "register" %}
-{% block title %}iManager - 注册{% endblock %}
+{% block title %}Simian CI - 注册{% endblock %}
 
 {% block page_content %}
-<div class="container">
-    <div class="page-header" style="margin-top: 120px;">
-        <h1 class="white">欢迎来到iManager，新用户。</h1>
-    </div>
+    <h1 class="lead-title text-center text-lg-left">Welcome to Simian CI, New User</h1>
+    <p class="lead-subtitle text-center text-lg-left">欢迎来到四面安全方案，请注册</p>
     <div class="col-md-4">
         {{ wtf.quick_form(form) }}
     </div>
-</div>
 {% endblock %}

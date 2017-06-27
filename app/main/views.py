@@ -9,4 +9,4 @@ from ..email import send_email
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('imanager.html')
+    return render_template('SiMianCI.html')

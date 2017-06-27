@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% set active_page = "login" %}
-{% block title %}iManager - 编辑物品{% endblock %}
+{% block title %}Simian CI - 编辑物品{% endblock %}
 
 {% block page_content %}
-<div class="container">
-    <div class="page-header" style="margin-top: 120px;">
-        <h1 class="white">编辑你的物品</h1>
-    </div>
+    <h1 class="lead-title text-center text-lg-left">Simian CI - EDIT ITEMS</h1>
+    <p class="lead-subtitle text-center text-lg-left">编辑您的个人信息</p>
+
     <div class="col-md-4" >
         {{ wtf.quick_form(form) }}
     </div>
-</div>
 {% endblock %}
