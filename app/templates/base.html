@@ -42,14 +42,15 @@
                 <ul class="navigation-links nav ml-auto align-items-center">
                     <li class="nav-item">
                         {% if current_user.is_authenticated %}
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemregistrate')}}">Add</a></li>
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemboard')}}">iManager</a></li>
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('main.user')}}">Profile</a></li>
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.logout')}}">Logout</a></li>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemregistrate')}}">Add</a>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemboard')}}">iManager</a>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('main.user')}}">Profile</a>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.logout')}}">Logout</a>
 
                         {% else %}
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.login')}}">Login</a></li>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.login')}}">Login</a>
                         {% endif %}
+                    </li>
                 </ul>
             </div>
             <div class="d-flex align-items-center flex-row justify-content-between hidden-md-up">
@@ -77,15 +78,15 @@
                 <ul class="navigation-links nav ml-auto align-items-center">
                     <li class="nav-item">
                         {% if current_user.is_authenticated %}
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemregistrate')}}">Add</a></li>
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemboard')}}">iManager</a></li>
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('main.user')}}">Profile</a></li>
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.logout')}}">Logout</a></li>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemregistrate')}}">Add</a>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemboard')}}">iManager</a>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('main.user')}}">Profile</a>
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.logout')}}">Logout</a>
 
                         {% else %}
-                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.login')}}">Login</a></li>
-                        {% endif %}
-                        
+                        <a class="navbar-button btn btn-secondary" href="{{url_for('auth.login')}}">Login</a>
+                        {% endif %} 
+                    </li>
                 </ul>
             </div>
             <div class="d-flex align-items-center flex-row justify-content-between hidden-md-up">
@@ -113,15 +114,16 @@
                     <div class="col-12">
                         <ul class="mobile-menu-links list-unstyled d-flex flex-column align-items-center">
                             <li class="mobile-menu-item">
-                            {% if current_user.is_authenticated %}
-                            <a href="{{url_for('imanager.itemregistrate')}}">Add</a></li>
-                            <a href="{{url_for('imanager.itemboard')}}">iManager</a></li>
-                            <a href="{{url_for('main.user')}}">Profile</a></li>
-                            <a href="{{url_for('auth.logout')}}">Logout</a></li>
+                                {% if current_user.is_authenticated %}
+                                <a href="{{url_for('imanager.itemregistrate')}}">Add</a>
+                                <a href="{{url_for('imanager.itemboard')}}">iManager</a>
+                                <a href="{{url_for('main.user')}}">Profile</a>
+                                <a href="{{url_for('auth.logout')}}">Logout</a>
 
-                            {% else %}
-                            <a href="{{url_for('auth.login')}}">Login</a></li>
-                            {% endif %}
+                                {% else %}
+                                <a href="{{url_for('auth.login')}}">Login</a>
+                                {% endif %}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -133,7 +135,7 @@
                     <div class="col-12">
                         <div class="lead-container">
                             <div class="lead-svg lead-svg--show">
-                                    <svg id="lead-svg" width="1470px" height="681px" viewBox="0 0 1470 681" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <svg id="lead-svg" width="1470px" height="681px" viewBox="0 0 1470 681" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
                                 <title>Artboard Copy 2</title>
                                 <desc>Created with Sketch.</desc>
@@ -482,6 +484,7 @@
                                                 {{ message }}<button type="button" class="close" data-dismiss="alert">&times;</button> 
                                             </div>
                                             {% endfor %}
+                                            <!-- 将导航条下面的一块内容挖出来给其他页面扩展 -->
                                             {% block page_content %}
 
                                             {% endblock %}
@@ -495,10 +498,10 @@
                 <div class="container hidden-lg-up">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-10">
-                                {% block page_content2 %}
-                                 
 
-                                 {% endblock %}
+                                <!-- Bootstrap响应式布局自动判断手机界面，进入以下内容 -->
+                                {% block page_content2 %}
+                                {% endblock %}
                             
                         </div>
                     </div>

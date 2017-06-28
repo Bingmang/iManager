@@ -7,14 +7,17 @@ from ..models import User, Permission, Role
 from ..email import send_email
 from .forms import EditProfileForm
 
+
 @main.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('SiMianCI.html')
 
+
 @main.route('/user', methods=['GET', 'POST'])
 def user():
     user = current_user
-    return render_template('user.html',user=user)
+    return render_template('user.html', user=user)
+
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
