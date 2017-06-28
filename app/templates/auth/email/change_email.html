@@ -1,7 +1,6 @@
-<p>Dear {{ user.username }},</p>
-<p>To confirm your new email address <a href="{{ url_for('auth.change_email', token=token, _external=True) }}">click here</a>.</p>
-<p>Alternatively, you can paste the following link in your browser's address bar:</p>
+<p>亲爱的 {{ user.username }},</p>
+<p>为了认证您的新邮箱，请点击下面的链接： <a href="{{ url_for('auth.change_email', token=token, _external=True) }}">click here</a>.</p>
+<p>您也可以将该链接粘贴至地址栏中:</p>
 <p>{{ url_for('auth.change_email', token=token, _external=True) }}</p>
 <p>Sincerely,</p>
 <p>The Simian CI Team</p>
-<p><small>Note: replies to this email address are not monitored.</small></p>

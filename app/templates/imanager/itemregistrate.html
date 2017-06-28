@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% set active_page = "login" %}
+{% set active_page = "itemregistrate" %}
 {% block title %}Simian CI - 添加物品{% endblock %}
 
 {% block page_content %}
-    <h1 class="lead-title text-center text-lg-left">Simian CI - MANAGE ITEMS</h1>
+    <h1 class="lead-title text-center text-lg-left">Simian CI - MANAGE THINGS</h1>
     <p class="lead-subtitle text-center text-lg-left">管理您的个人信息</p>
     <div class="col-md-4" >
         {{ wtf.quick_form(form) }}

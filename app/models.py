@@ -8,6 +8,7 @@ from flask import current_app, request, url_for
 from flask_login import UserMixin, AnonymousUserMixin
 from app.exceptions import ValidationError
 from . import db, login_manager
+from .sm3 import sm3
 
 # 不同用户拥有不同权限，此处共分为5级权限
 
@@ -31,14 +32,14 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'User': (Permission.LEVEL1 |
+            '普通用户': (Permission.LEVEL1 |
                      Permission.LEVEL2 |
                      Permission.LEVEL3, True),
-            'Moderator': (Permission.LEVEL1 |
-                          Permission.LEVEL2 |
-                          Permission.LEVEL3 |
-                          Permission.LEVEL4, False),
-            'Administrator': (0xff, False)
+            '管理员': (Permission.LEVEL1 |
+                    Permission.LEVEL2 |
+                    Permission.LEVEL3 |
+                    Permission.LEVEL4, False),
+            '网站管理员': (0xff, False)
         }
         for r in roles:
             role = Role.query.filter_by(name=r).first()
@@ -60,7 +61,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), unique=True, index=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(128))
-    confirmed = db.Column(db.Boolean, default=True)
+    confirmed = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(64))
     location = db.Column(db.String(64))
     about_me = db.Column(db.Text())
@@ -68,10 +69,11 @@ class User(UserMixin, db.Model):
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_hash = db.Column(db.String(32))
 
-    # imanager
+    # 用户的记事本
     imanagers = db.relationship(
         'iManagerItem', backref='owner', lazy='dynamic')
 
+    # 初始化用户信息，设置用户权限、头像
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
         if self.role is None:
@@ -88,14 +90,14 @@ class User(UserMixin, db.Model):
     def password(self):
         raise AttributeError('password is not a readable attribute')
 
-    #用户密码通过werkzeug的generate_password_hash方法进行加密
+    # 用户密码通过sm3杂凑函数进行加密
     @password.setter
     def password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password_hash = sm3(password)
 
     # 验证用户密码的函数，对用户密码的哈希值进行验证（根据输入的密码进行重新哈希）
     def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return self.password_hash==sm3(password)
 
     # 生成用户认证token的函数，包含有效期设定
     def generate_confirmation_token(self, expiration=3600):
@@ -104,18 +106,18 @@ class User(UserMixin, db.Model):
 
     # 对传进的token进行认证
     def confirm(self, token):
-        #根据当前服务器的密码获取密码校验器
+        # 根据当前服务器的密码获取密码校验器
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
-            #根据密码校验器解析token
+            # 根据密码校验器解析token
             data = s.loads(token)
         except:
-            #如果解析失败则返回False
+            # 如果解析失败则返回False
             return False
         #（防止重放攻击）如果从token中解析出的数据中用户id与用户的id不同，则返回False
         if data.get('confirm') != self.id:
             return False
-        #认证成功，更新用户信息
+        # 认证成功，更新用户信息
         self.confirmed = True
         db.session.add(self)
         return True
@@ -186,15 +188,6 @@ class User(UserMixin, db.Model):
         return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(
             url=url, hash=hash, size=size, default=default, rating=rating)
 
-    def to_json(self):
-        json_user = {
-            'url': url_for('api.get_user', id=self.id, _external=True),
-            'username': self.username,
-            'member_since': self.member_since,
-            'last_seen': self.last_seen
-        }
-        return json_user
-
     def generate_auth_token(self, expiration):
         s = Serializer(current_app.config['SECRET_KEY'],
                        expires_in=expiration)
@@ -237,16 +230,4 @@ class iManagerItem(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     alarm_state = db.Column(db.Boolean, default=False)
     registe_time = db.Column(db.DateTime, default=datetime.utcnow)
-    angle_range = db.Column(db.Integer, default=9)
-
-    def to_json(self):
-        json_imanager = {
-            'id': self.id,
-            'item_id': self.item_id,
-            'item_name': self.item_name,
-            'owner_id': self.owner_id,
-            'angle_range': self.angle_range,
-            'alarm_state': self.alarm_state,
-            'registe_time': self.registe_time
-        }
-        return json_imanager
+    angle_range = db.Column(db.Integer, default=1)

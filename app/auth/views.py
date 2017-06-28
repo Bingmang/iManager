@@ -29,7 +29,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()  #根据email查询用户
         if user is not None and user.verify_password(form.password.data):   #如果查询到该用户并且验证密码成功
             login_user(user, form.remember_me.data) #登陆该用户
-            return redirect(request.args.get('next') or url_for('imanager.itemboard'))  #重定向到另一个页面
+            return redirect(request.args.get('next') or url_for('main.user'))  #重定向到另一个页面
         flash('帐号密码错误，请重试。')    #否则提示用户帐号密码错误
     return render_template('auth/login.html', form=form)    #回到该页面，并将表单中的数据保留
 
@@ -66,12 +66,11 @@ def confirm(token): #分析传进的参数token
     if current_user.confirmed:  #如果用户已经注册认证过了，则返回到登陆界面
         return redirect(url_for('auth.login'))
     if current_user.confirm(token): #如果token有效，则告知用户认证成功
-        flash('您已成功认证，感谢注册iManager！')
+        flash('您已成功认证，感谢注册Simian CI！')
     else:
         flash('您的认证链接无效或已使用，请确认！')
     return redirect(url_for('auth.login'))  #认证无效，返回到登陆界面
 
-#TODO
 #/change-password路由，处理更改密码的事件
 @auth.route('/change-password', methods=['GET', 'POST'])
 @login_required
@@ -82,12 +81,11 @@ def change_password():
             current_user.password = form.password.data  #更新用户密码
             db.session.add(current_user)    #更新用户信息
             flash('您的密码已更新。')
-            return redirect(url_for('auth.login'))  #返回至登陆界面
+            return redirect(url_for('main.user'))  #返回至登陆界面
         else:
             flash('密码错误，请检查。')
     return render_template("auth/change_password.html", form=form)
 
-#TODO
 #/reset路由，处理重置密码的事件
 @auth.route('/reset', methods=['GET', 'POST'])
 def password_reset_request():
@@ -107,7 +105,6 @@ def password_reset_request():
         return redirect(url_for('auth.login'))  #返回至登陆界面
     return render_template('auth/reset_password.html', form=form)
 
-#TODO
 #/reset/TOKEN路由，用于验证重置密码的token
 @auth.route('/reset/<token>', methods=['GET', 'POST'])
 def password_reset(token):
@@ -127,7 +124,6 @@ def password_reset(token):
             return redirect(url_for('main.index'))  #token无效，直接返回主页
     return render_template('auth/reset_password.html', form=form)
 
-#TODO
 #/change-email路由，用于更改用户的邮箱
 @auth.route('/change-email', methods=['GET', 'POST'])
 @login_required
@@ -158,7 +154,6 @@ def change_email(token):
         flash('无效的请求！')
     return redirect(url_for('auth.login'))
 
-#TODO
 @auth.route('/confirm')
 @login_required
 def resend_confirmation():
@@ -168,7 +163,6 @@ def resend_confirmation():
     flash('一封新的认证邮件已经发送到您的邮箱。')
     return redirect(url_for('auth.login'))
 
-#TODO
 @auth.route('/unconfirmed')
 def unconfirmed():
     #当前用户为匿名用户或当前用户已认证，直接返回主页

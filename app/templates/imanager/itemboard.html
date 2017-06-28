@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% set active_page = "index" %}
-{% block title %}Simian CI - 物品清单{% endblock %}
+{% block title %}Simian CI - 信息管理{% endblock %}
 {% block page_content %}
 
     <div id="features" class="features-section">
         
         <div class="container text-center">
-            <h2 class="section-title">{{ user.username }} 的物品</h2>
-            <p class="intro">{% if user.name %}{{ user.name }}<br>{% endif %} {% if user.location %} 来自 <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>{% endif %}</p>
+            <h2 class="section-title">{{ user.username }} 的记事本</h2>
+            <p class="intro">{% if user.name %}{{ user.name }}<br>{% endif %}</p>
             {% if user.about_me %}
             <p class="intro">{{ user.about_me }}</p>
             {% endif %}
-            <p class="intro">用户注册时间： {{ moment(user.member_since).format('L') }}. <br> 最后一次登陆： {{ moment(user.last_seen).fromNow() }}.</p>
+            <p class="intro">最后一次登陆： {{ moment(user.last_seen).fromNow() }}.</p>
             <div class="tabbed-area row">
                 <!-- Nav tabs -->
                 <ul>

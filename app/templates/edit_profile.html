@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "edit_profile" %}
+{% block title %}Simian CI - 编辑个人信息{% endblock %}
+
+{% block page_content %}
+    <h1 class="lead-title text-center text-lg-left">Simian CI - EDIT PROFILE</h1>
+    <p class="lead-subtitle text-center text-lg-left">编辑您的个人信息</p>
+    
+    <div class="col-md-4" >
+        {{ wtf.quick_form(form) }}
+    </div>
+    <p>使用新邮箱？ <a href="{{ url_for('auth.change_email_request') }}">更改邮箱。</a></p>
+    <p>想换新密码？ <a href="{{ url_for('auth.change_password') }}">更改密码。</a></p>
+{% endblock %}

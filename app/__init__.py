@@ -42,7 +42,5 @@ def create_app(config_name):
     from .imanager import imanager as imanager_blueprint
     app.register_blueprint(imanager_blueprint, url_prefix='/imanager')
 
-    from .api import api as api_1_0_blueprint
-    app.register_blueprint(api_1_0_blueprint, url_prefix='/api')
     
     return app
