@@ -14,7 +14,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     IMANAGER_MAIL_SUBJECT_PREFIX = '[Simian CI]'
-    IMANAGER_MAIL_SENDER = 'Simian CI Admin <bingmangtech@163.com>'
+    IMANAGER_MAIL_SENDER = 'Simian CI Admin <435406977@qq.com>'
     IMANAGER_ADMIN = os.environ.get('IMANAGER_ADMIN')
     IMANAGER_SLOW_DB_QUERY_TIME = 0.5
 
