@@ -158,7 +158,7 @@ def change_email(token):
 @login_required
 def resend_confirmation():
     token = current_user.generate_confirmation_token()
-    send_email(current_user.email, '认证您的帐号',
+    send_email(current_user.email, 'Confirm Your Account',
                 'auth/email/confirm', user=current_user, token=token)
     flash('一封新的认证邮件已经发送到您的邮箱。')
     return redirect(url_for('imanager.itemboard'))
