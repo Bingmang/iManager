@@ -9,7 +9,7 @@ class Config:
     MAIL_USE_SSL = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
-    MAIL_SERVER = 'smtp.163.com'
+    MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 465
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
