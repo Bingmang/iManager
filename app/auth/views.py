@@ -167,5 +167,5 @@ def resend_confirmation():
 def unconfirmed():
     #当前用户为匿名用户或当前用户已认证，直接返回主页
     if current_user.is_anonymous or current_user.confirmed:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('imanager.itemboard'))
     return render_template('auth/unconfirmed.html')
