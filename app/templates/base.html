@@ -114,13 +114,13 @@
                         <ul class="mobile-menu-links list-unstyled d-flex flex-column align-items-center">
                             <li class="mobile-menu-item">
                             {% if current_user.is_authenticated %}
-                            <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemregistrate')}}">Add</a></li>
-                            <a class="navbar-button btn btn-secondary" href="{{url_for('imanager.itemboard')}}">iManager</a></li>
-                            <a class="navbar-button btn btn-secondary" href="{{url_for('main.user')}}">Profile</a></li>
-                            <a class="navbar-button btn btn-secondary" href="{{url_for('auth.logout')}}">Logout</a></li>
+                            <a href="{{url_for('imanager.itemregistrate')}}">Add</a></li>
+                            <a href="{{url_for('imanager.itemboard')}}">iManager</a></li>
+                            <a href="{{url_for('main.user')}}">Profile</a></li>
+                            <a href="{{url_for('auth.logout')}}">Logout</a></li>
 
                             {% else %}
-                            <a class="navbar-button btn btn-secondary" href="{{url_for('auth.login')}}">Login</a></li>
+                            <a href="{{url_for('auth.login')}}">Login</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -495,26 +495,11 @@
                 <div class="container hidden-lg-up">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-10">
-                            <h1 class="lead-title text-center text-lg-left">Fix failures before they happen</h1>
-                            <p class="lead-subtitle text-center text-lg-left">Simulate infrastructure errors at times your team can monitor.</p>
-                            <div class="d-flex justify-content-center">
-                                <form class="form-inline notify-form" action="{{ url_for('auth.register') }}" method="get" arget="_blank">
-                                    <div class="col-12 col-md-5 notify-form-item">
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input type="text" class="notify-form-input form-control" id="mce-EMAIL" name="EMAIL" placeholder="Email Address"></div>
-                                    <div class="col-12 col-md-4 notify-form-item">
-                                        <label class="sr-only" for="mce-PROVIDER">Provider</label>
-                                        <select class="notify-form-select form-control custom-select" name="PROVIDER" id="mce-PROVIDER">
-                                            <option value="User">普通用户</option>
-                                            <option value="Moderator">管理员</option>
-                                            <option value="Administrator">网站管理员</option>
-                                            <option value="Anonymous" disabled selected>匿名用户</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12 col-md-3 notify-form-item">
-                                        <button type="submit" class="notify-form-button btn btn-primary" name="subscribe" onclick="{{ url_for('auth.register') }}">注册</button></div>
-                                </form>
-                            </div>
+                                {% block page_content2 %}
+                                 
+
+                                 {% endblock %}
+                            
                         </div>
                     </div>
                 </div>
