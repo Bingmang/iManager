@@ -4,10 +4,10 @@
 {% block title %}Simian CI - 登陆{% endblock %}
 {% block page_content %}
 <div class="IntroWrapper">
-    <div class="MoneyShot" style="float:left">
+    <div class="MoneyShot" style="display:inline">
         <img class="MoneyShotImg" src="{{ user.gravatar(size=256) }}">
     </div>
-    <div class="IntroText" style="float:left">
+    <div class="IntroText" style="display:inline">
         <h1>{{ user.username }}</h1>
         {% if user.username or user.location %}
         <p>
