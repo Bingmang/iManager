@@ -1,4 +1,4 @@
-Hi, this is University of Sicience and Technology Beijing {{ user.username }},
+H,  {{ user.username }},
 
 Welcome to Simian CI! Confirm Link:
 
