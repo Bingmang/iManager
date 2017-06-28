@@ -37,9 +37,9 @@
             <p class="intro">最后一次登陆： {{ moment(user.last_seen).fromNow() }}.</p>
             <div class="tabbed-area row">
                 <!-- Nav tabs -->
-                <ul>
+                <div style="text-align: center">
                     {% include 'imanager/_items.html' %}
-                </ul>
+                </div>
             </div><!--//tabbed-area-->
 
         </div><!--//container-->
