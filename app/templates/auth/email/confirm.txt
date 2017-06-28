@@ -1,11 +1,5 @@
-Dear {{ user.username }},
+Hi, this is University of Sicience and Technology Beijing {{ user.username }},
 
-Welcome to Simian CI!
-
-To confirm your account please click on the following link:
+Welcome to Simian CI! Confirm Link:
 
 {{ url_for('auth.confirm', token=token, _external=True) }}
-
-Sincerely,
-
-The Simian CI Team
