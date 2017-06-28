@@ -3,9 +3,11 @@
 {% set active_page = "login" %}
 {% block title %}Simian CI - 登陆{% endblock %}
 {% block page_content %}
-<div class="page-header">
-    <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
-    <div class="profile-header">
+<div class="IntroWrapper">
+    <div class="MoneyShot">
+        <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+    </div>
+    <div class="IntroText">
         <h1>{{ user.username }}</h1>
         {% if user.username or user.location %}
         <p>
