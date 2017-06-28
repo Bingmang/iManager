@@ -6,16 +6,15 @@ class Config:
     #Linux用户配置环境变量： export MAIL_USERNAME=<Gmail username>
     #Windows用户配置环境变量： set MAIL_USERNAME=<Gmail username>
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'iManager secret key USTB'
-    SSL_DISABLE = False
+    MAIL_USE_SSL = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
+    MAIL_SERVER = 'smtp.163.com'
+    MAIL_PORT = 465
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    IMANAGER_MAIL_SUBJECT_PREFIX = '[iManager]'
-    IMANAGER_MAIL_SENDER = 'iManager Admin <ustbbingmang@gmail.com>'
+    IMANAGER_MAIL_SUBJECT_PREFIX = '[Simian CI]'
+    IMANAGER_MAIL_SENDER = 'Simian CI Admin <bingmangtech@163.com>'
     IMANAGER_ADMIN = os.environ.get('IMANAGER_ADMIN')
     IMANAGER_SLOW_DB_QUERY_TIME = 0.5
 
