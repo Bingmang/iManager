@@ -1,9 +1,11 @@
-亲爱的 {{ user.username }},
+Dear {{ user.username }},
 
-为了认证您的新邮箱，请点击下面的链接：
+To confirm your new email address click on the following link:
 
 {{ url_for('auth.change_email', token=token, _external=True) }}
 
 Sincerely,
 
 The Simian CI Team
+
+Note: replies to this email address are not monitored.

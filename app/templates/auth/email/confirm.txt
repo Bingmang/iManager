@@ -1,8 +1,8 @@
-亲爱的 {{ user.username }},
+Dear {{ user.username }},
 
-欢迎注册 Simian CI!
+Welcome to Simian CI!
 
-为了认证您的帐号，请点击下面的链接：
+To confirm your account please click on the following link:
 
 {{ url_for('auth.confirm', token=token, _external=True) }}
 

@@ -161,7 +161,7 @@ def resend_confirmation():
     send_email(current_user.email, '认证您的帐号',
                 'auth/email/confirm', user=current_user, token=token)
     flash('一封新的认证邮件已经发送到您的邮箱。')
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('imanager.itemboard'))
 
 @auth.route('/unconfirmed')
 def unconfirmed():
