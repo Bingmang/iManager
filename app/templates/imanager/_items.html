@@ -1,13 +1,7 @@
 <ul>
     {% for item in items %}
 
-    <li>事件ID：{{ item.id }} 丨
-        名称：{{ item.item_id }} 丨
-        内容：{{ item.item_name }} 丨
-        添加时间： {{ item.registe_time }}</br>
-        优先级： {{ item.angle_range }} 丨
-        所有者ID：{{ item.owner_id }} 丨
-        完成状态：{{ item.alarm_state }}
+    <li>事件ID：{{ item.id }} 丨 名称：{{ item.item_id }} 丨 内容：{{ item.item_name }} 丨 添加时间： {{ item.registe_time }}</br> 优先级： {{ item.angle_range }} 丨 所有者ID：{{ item.owner_id }} 丨 完成状态：{{ item.alarm_state }}
         <div class="post-footer">
             <a href="{{ url_for('imanager.edit_item', id=item.id) }}">
                 <span class="label label-primary">编辑</span>
