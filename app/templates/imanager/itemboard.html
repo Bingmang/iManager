@@ -8,7 +8,7 @@
             <h2 class="section-title">{{ user.username }} 的记事本</h2>
             <p class="intro">{% if user.name %}{{ user.name }}<br>{% endif %}</p>
             {% if user.about_me %}
-            <p class="intro">{{ user.about_me }}</p>
+            <p class="intro">关于我： {{ user.about_me }}</p>
             {% endif %}
             <p class="intro">最后一次登陆： {{ moment(user.last_seen).fromNow() }}.</p>
             <div class="tabbed-area row">

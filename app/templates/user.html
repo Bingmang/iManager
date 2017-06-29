@@ -15,13 +15,15 @@
             {% if user.location %}
                 来自 <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
             {% endif %}
+            {% if user.about_me %}<p>关于我： {{ user.about_me }}</p>{% endif %}
         </p>
         {% endif %}
         {% if current_user.is_administrator() %}
         <p>用户邮箱：<a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
         <p>用户密码哈希值(SM3加密) : {{ user.password_hash }}</a></p>
+        <p>用户双向认证口令：{{ user.doublecheck }}</p>
         {% endif %}
-        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+
         <p>注册时间 {{ moment(user.member_since).format('L') }}. </br>最后一次登陆 {{ moment(user.last_seen).fromNow() }}.</p>
         <p>
             {% if user == current_user %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "doublecheck" %}
+{% block title %}Simian CI - 双向认证{% endblock %}
+
+{% block page_content %}
+    <h1 class="lead-title text-center text-lg-left">Welcome to Simian CI</h1>
+    <p class="lead-subtitle text-center text-lg-left">您在服务器上预留的口令信息</p>
+    </br>
+    <p class="lead-subtitle text-center text-lg-left">{{ user.doublecheck }}</p>
+    <p>口令正确？ <a href="{{ url_for('auth.doublecheck') }}">前往登陆。</a></p>
+{% endblock %}
+
+{% block page_content2 %}
+    <h1 class="lead-title text-center text-lg-left">Welcome to Simian CI</h1>
+    <p class="lead-subtitle text-center text-lg-left">您在服务器上预留的口令信息</p>
+    </br>
+    <p class="lead-subtitle text-center text-lg-left">{{ user.doublecheck }}</p>
+    <p>口令正确？ <a href="{{ url_for('auth.login') }}">前往登陆。</a></p>
+{% endblock %}

@@ -61,6 +61,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), unique=True, index=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(128))
+    doublecheck = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(64))
     location = db.Column(db.String(64))
@@ -90,14 +91,14 @@ class User(UserMixin, db.Model):
     def password(self):
         raise AttributeError('password is not a readable attribute')
 
-    # 用户密码通过sm3杂凑函数进行加密
+    # 用户密码通过SM3单向杂凑函数进行加密
     @password.setter
     def password(self, password):
         self.password_hash = sm3(password)
 
     # 验证用户密码的函数，对用户密码的哈希值进行验证（根据输入的密码进行重新哈希）
     def verify_password(self, password):
-        return self.password_hash==sm3(password)
+        return self.password_hash == sm3(password)
 
     # 生成用户认证token的函数，包含有效期设定
     def generate_confirmation_token(self, expiration=3600):

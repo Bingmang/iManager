@@ -1955,7 +1955,8 @@ to {
 	.modal-lg {
 	max-width:800px
 }
-}@supports ((-webkit-transform:translate3d(0,0,0)) or (transform:translate3d(0,0,0))) {
+}
+@supports ((-webkit-transform:translate3d(0,0,0)) or (transform:translate3d(0,0,0))) {
 	.carousel-item {
 	-webkit-transition:-webkit-transform .6s ease-in-out;
 	transition:-webkit-transform .6s ease-in-out;
@@ -1966,7 +1967,8 @@ to {
 	-webkit-perspective:1000px;
 	perspective:1000px
 }
-}@supports ((-webkit-transform:translate3d(0,0,0)) or (transform:translate3d(0,0,0))) {
+}
+@supports ((-webkit-transform:translate3d(0,0,0)) or (transform:translate3d(0,0,0))) {
 	.carousel-item-next.carousel-item-left,.carousel-item-prev.carousel-item-right {
 	-webkit-transform:translate3d(0,0,0);
 	transform:translate3d(0,0,0)
@@ -3321,25 +3323,4 @@ a.text-primary:focus,a.text-primary:hover {
 	.lead {
 	padding:0
 }
-}
-@media (min-width: 50rem){
-    .IntroWrapper{
-        display: table;
-        table-layout: fixed;
-        width: 100%;
-    }
-
-    .MoneyShot,
-    .IntroText{
-        display:table-cell;
-        width: 50%;
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .IntroText{
-        padding: .5rem;
-        font-size: 2.5rem;
-        text-align: left;
-    }
 }

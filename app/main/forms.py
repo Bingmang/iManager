@@ -11,7 +11,8 @@ class EditProfileForm(Form):
         Required(message='请输入用户名'), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,'用户名仅支持英文喏')])
     role = SelectField('用户权限', coerce=int)
     location = StringField('所在地', validators=[Length(0,64)])
-    about_me = TextAreaField('关于我')
+    about_me = StringField('关于我', validators=[Length(0,64)])
+    doublecheck = StringField('双向认证口令', validators=[Length(0,64)])
     submit = SubmitField('更新信息')
 
     def __init__(self, *args, **kwargs):
