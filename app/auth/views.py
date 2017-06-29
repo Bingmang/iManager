@@ -22,6 +22,7 @@ def before_request():
             return redirect(url_for('auth.unconfirmed'))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #/login路由，对用户进行双向认证
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,6 +54,11 @@ def doublecheck():
 # /login路由，处理用户登陆界面
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+=======
+# /login路由，处理用户登陆界面
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
+>>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
     form = LoginForm()  # 获取登陆表单
     if form.validate_on_submit():  # 处理表单提交事件
         user = User.query.filter_by(
@@ -64,6 +70,9 @@ def login():
             return redirect(request.args.get('next') or url_for('main.user'))
         flash('帐号密码错误，请重试。')  # 否则提示用户帐号密码错误
     return render_template('auth/login.html', form=form)  # 回到该页面，并将表单中的数据保留
+<<<<<<< HEAD
+>>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
+=======
 >>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
 
 # /logout路由，处理用户登出事件
@@ -83,10 +92,16 @@ def register():
         user = User(email=form.email.data,
                     username=form.username.data,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     password=form.password.data,
                     doublecheck=form.doublecheck.data)    
         db.session.add(user)    #将user注册到数据库中
         db.session.commit()     #提交数据
+=======
+                    password=form.password.data)
+        db.session.add(user)  # 将user注册到数据库中
+        db.session.commit()  # 提交数据
+>>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
 =======
                     password=form.password.data)
         db.session.add(user)  # 将user注册到数据库中
@@ -197,8 +212,11 @@ def change_email(token):
     return redirect(url_for('auth.login'))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @auth.route('/confirm', methods=['GET', 'POST'])
 =======
+=======
+>>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
 
 @auth.route('/confirm')
 >>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
@@ -211,8 +229,11 @@ def resend_confirmation():
     return redirect(url_for('imanager.itemboard'))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @auth.route('/unconfirmed', methods=['GET', 'POST'])
 =======
+=======
+>>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
 
 @auth.route('/unconfirmed')
 >>>>>>> 261682909a596851ad7bcdd749f8e98e95c7e540
